@@ -1,0 +1,13 @@
+---
+- name: Install packages using a loop
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install packages
+      yum:
+        name: "{{ item }}"
+        state: absent
+      with_items:
+        - java-1.8.0-openjdk
+        - httpd
+        - docker
